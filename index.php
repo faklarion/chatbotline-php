@@ -60,7 +60,12 @@ $app->post('/', function ($request, $response)
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
-		} 
+		} else {
+			$message = "error";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		}
 	}
 	
 
