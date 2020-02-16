@@ -43,23 +43,9 @@ $app->post('/', function ($request, $response)
 	$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($_ENV['CHANNEL_ACCESS_TOKEN']);
 	$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $_ENV['CHANNEL_SECRET']]);
 	$data = json_decode($body, true);
-	foreach ($data['events'] as $event) {
-		// Message from group/room
-    if ($event['source']['userId']) {
- 
-        $userId = $event['source']['userId'];
-        $getprofile = $bot->getProfile($userId);
-        $profile = $getprofile->getJSONDecodedBody();
-        $greetings = new TextMessageBuilder("Halo, " . $profile['displayName']);
- 
-        $result = $bot->replyMessage($event['replyToken'], $greetings);
-        $response->getBody()->write((string) $result->getJSONDecodedBody());
-        return $response
-            ->withHeader('Content-Type', 'application/json')
-            ->withStatus($result->getHTTPStatus());
- 
-    } else {
-        $userMessage = $event['message']['text'];
+	foreach ($data['events'] as $event)
+	{
+		$userMessage = $event['message']['text'];
 		if(strtolower($userMessage) == '/menu')
 		{
 			$message = "List menu : 
@@ -115,7 +101,6 @@ $app->post('/', function ($request, $response)
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		}
 	}
-}
 	
 
 });
