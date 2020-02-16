@@ -48,8 +48,9 @@ $app->post('/', function ($request, $response)
 		$userMessage = $event['message']['text'];
 		if(strtolower($userMessage) == '/menu')
 		{
-			$message = "List menu : /subuh <br>
-			/zuhur";
+			$message = "List menu : 
+									/subuh
+									/zuhur";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
