@@ -50,20 +50,52 @@ $app->post('/', function ($request, $response)
 		{
 			$message = "List menu : 
 									/subuh
-									/zuhur";
+									/zuhur
+									/ashar
+									/magrib
+									/isya";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
-		} elseif(strtolower($userMessage) == 'hai')
+		} elseif(strtolower($userMessage) == '/subuh')
 		{
-			$message = "hai juga";
+			$message = "Jadwal sholat subuh di Banjarmasin yaitu 05.10 WITA";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
 		
-		} else {
-			$message = "Perintah tidak ditemukan, silakan ketik /menu untuk melihat perintah";
+		} elseif(strtolower($userMessage) == '/zuhur')
+		{
+			$message = "Jadwal sholat zuhur di Banjarmasin yaitu 12.36 WITA";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		} elseif(strtolower($userMessage) == '/ashar')
+		{
+			$message = "Jadwal sholat ashar di Banjarmasin yaitu 15.51 WITA";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		} elseif(strtolower($userMessage) == '/magrib')
+		{
+			$message = "Jadwal sholat magrib di Banjarmasin yaitu 18.42 WITA";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		} elseif(strtolower($userMessage) == '/isya')
+		{
+			$message = "Jadwal sholat isya di Banjarmasin yaitu 19.53 WITA";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
+		
+		}  
+		else {
+			$message = "Silakan ketik /menu untuk melihat perintah";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 			$result = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 			return $result->getHTTPStatus() . ' ' . $result->getRawBody();
